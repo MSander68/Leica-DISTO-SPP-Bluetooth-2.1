@@ -31,6 +31,10 @@ MIT — do cool stuff, at your own risk. Contributions welcome.
 
 
 ---
+tiny warning:
+b powers the device off.
+a resets.
+N70N y N (baud) is intentionally not exposed.
 
 ```markdown
 # Leica DISTO D8 SPP — observed protocol
@@ -70,3 +74,4 @@ When you press **SEND** on the device, it pushes a value; the host should reply:
 ## Notes
 - CRLF (`\r\n`) was the most reliable line ending for ONLINE commands on our unit.
 - Some commands behave differently across firmware; test on your device.
+
