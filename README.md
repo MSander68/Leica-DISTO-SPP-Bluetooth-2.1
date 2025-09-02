@@ -23,6 +23,7 @@ Confirmed working with DISTO D8 on COMx @ 9600 8N1.
 python -m pip install --upgrade pyserial
 python disto_d8_gui_R3.py
 
+requirements pyserial>=3.5
 
 
 
