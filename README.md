@@ -20,3 +20,49 @@ Confirmed working with DISTO D8 on COMx @ 9600 8N1.
 ```bash
 python -m pip install --upgrade pyserial
 python disto_d8_gui_R3.py
+
+
+
+
+---
+
+# PROTOCOL.md (concise summary you can include)
+
+```markdown
+# Leica DISTO D8 SPP — observed protocol
+
+**Transport:** Bluetooth Classic SPP → COMx @ 9600 8N1
+
+## Host → Device (ASCII + CRLF)
+
+| Cmd | Meaning | Reply / Behavior |
+| --- | --- | --- |
+| `G` / `g` | Single distance | Returns `31..00±xxxxxxxx` (mm). |
+| `H` / `h` | Start tracking | Streams `31..` (and sometimes `51..`) until stopped. |
+| `P` / `p` | Stop / Laser OFF | Returns `?` (OK). |
+| `O` | Laser ON | Often `?`, sometimes `@E203` (state-dependent). |
+| `c` | Clear/stop (soft) | Returns `?`. |
+| `T` | Temperature | Returns `40..±xxxxxxxx` (0.1 °C). |
+| `K` | Signal strength | Returns/streams `53..±xxxxxxxx` (mV). |
+| `a` | Reset (Danger) | Returns `?`, unit resets. |
+| `b` | Power OFF (Danger) | Returns `?`, device powers down. |
+
+> Commands not listed above usually return `@E203` on our D8 test unit.
+
+## Device → Host (lines, space-separated tokens)
+
+### Word index tokens
+Format: `WW..UU±VVVVVVVV` (ASCII; lengths vary; leading zeros used)
+
+- `31..` → **distance**; `UU=00` → mm. Convert: meters = `VVVVVVVV / 1000`.
+- `40..` → **temperature**; value/10 = °C.
+- `53..` → **signal strength**; value = mV.
+- `51..` → compatibility/status filler — safe to log/ignore.
+
+### Push mode confirm
+When you press **SEND** on the device, it pushes a value; the host should reply:
+- `cfm\n` (**LF**, not CRLF!) to acknowledge and avoid Info 240.
+
+## Notes
+- CRLF (`\r\n`) was the most reliable line ending for ONLINE commands on our unit.
+- Some commands behave differently across firmware; test on your device.
