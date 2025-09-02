@@ -17,6 +17,15 @@ Confirmed working with DISTO D8 on COMx @ 9600 8N1.
 - `disto_raw_console.py` — Interactive console: sends ASCII (adds LF) or raw bytes via `hex:...`.
 - `disto_send_cmd.py` — One-shot sender (e.g., `python disto_send_cmd.py COM7 g` sends `g<CR>`).
 
+Tested on Python 3.11/3.12/3.13 on Windows 10/11.” That heads off issues.
+Antivirus note for the EXE
+UPX’d single-file EXEs sometimes trigger false positives
+
+Checksums for the EXE = certutil -hashfile disto_d8_guiR3.exe SHA256
+SHA256 hash of disto_d8_guiR3.exe:
+**2d712ce74081fddf525e772c9b6348d117e0fceeeab89b2b7a5a31bac6270bd6**
+CertUtil: -hashfile command completed successfully.
+
 ## Install
 
 ```bash
