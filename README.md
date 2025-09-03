@@ -1,9 +1,9 @@
-# Leica-DISTO-SPP-Bluetooth-2.1
+# Leica DISTO SPP Bluetooth-2.1
 Leica DISTO™ D3a BT / D330i / D8 back from the dead!
 
 # Leica DISTO D8
 <img width="1037" height="708" alt="GUI" src="https://github.com/user-attachments/assets/649761e4-90bd-4678-b6ec-fc553eda6419" />
- — SPP (Bluetooth 2.1) Toolkit
+SPP (Bluetooth 2.1) Toolkit
 
 **Windows-friendly tools to talk to legacy Leica DISTO models (D8 / D3a BT) over Bluetooth Classic SPP (virtual COM).**  
 Confirmed working with DISTO D8 on COMx @ 9600 8N1.
