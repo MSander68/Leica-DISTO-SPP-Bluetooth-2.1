@@ -1,4 +1,4 @@
-Helper tools (short descriptions for your repo)
+Helper tools (short descriptions)
 
 disto_alpha_sweep.py
 Alphabet brute tester. Sends A–Z/a–z with CRLF/CR, logs hex/text to CSV, classifies replies (distance/ok/error/none), and tries to auto-stop if a command starts streaming.
